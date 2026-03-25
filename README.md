@@ -1,4 +1,4 @@
-# Frontend Mentor - Testimonials grid section solution
+# Frontend Mentor - Article preview component
 
 Solución de [Article preview component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/article-preview-component-dYBN_pYFT).  
 
