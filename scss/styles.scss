@@ -1,0 +1,225 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'sass:color';
+
+
+body{
+    font-family: v.$fuente_principal;
+    background-color: v.$lightGrayishBlue;
+
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    flex-direction: column;  
+    margin: 0; 
+}
+
+.article{
+    background-color: v.$white;
+    overflow: hidden;
+    border-radius: 10px;
+    width: 21rem;
+
+    display: flex;
+    flex-direction: column;
+
+    @include m.desktop{
+        flex-direction: row;
+        width: 47rem;
+        height: 18rem;
+        overflow: visible;
+    }
+
+    &__image{
+        width: auto;
+        height: 13rem;
+        display: block;
+        background-position: center;
+        background-size: cover;
+        background-position: center;
+
+        @include m.desktop{
+            height: auto;
+            width: 18rem;
+        }
+    }
+
+    &__title{
+        font-weight: v.$bold;
+        font-size: 1.01rem;
+        color: v.$darkGrayishBlue;
+        margin: 2rem 2rem 1rem 2rem;
+        line-height: 140%;
+
+        @include m.desktop{
+            font-size: 1.15rem;
+            margin: 2rem 2.5rem 1rem 2rem;
+        }
+    }
+
+    &__description{
+        color: v.$desaturatedDarkBlue;
+        font-size: 0.87rem;
+        margin: 0 2rem 1rem 2rem;
+        line-height: 150%;
+        font-weight: v.$medium;
+    }
+
+    &__user{
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        margin: 1.5rem 1.2rem 1rem 1.2rem;
+
+        &-image{
+            border-radius: 50%;
+            width: 3rem;
+        }
+
+        &--info{
+            margin-left: 1rem;
+        }
+
+        &-name{
+            font-weight: v.$bold;
+            color: v.$darkGrayishBlue;
+            font-size: 0.85rem;
+        }
+
+        &-date{
+            font-weight: v.$medium;
+            color: v.$grayishBlue;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        &-share{
+            margin-left: auto;
+            background-color:  color.adjust(v.$lightGrayishBlue, $lightness: -2%);
+            border-radius: 50%;
+            padding: 0.5rem;
+
+            @include m.desktop{
+                margin-right: 1rem;
+            }
+
+            &:hover{
+                cursor: pointer;
+            }
+            
+            &--active{
+                 background-color:  color.adjust(v.$darkGrayishBlue, $lightness: 15%);
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
+           
+        }
+    }
+
+    &__content{
+        position: relative;
+    }
+
+    &__share{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background-color: v.$darkGrayishBlue;
+
+        @include m.desktop{
+            position: absolute;
+            right: -5.9rem;
+            bottom: 5.8rem;
+            border-radius: 10px;
+            padding: 1rem 2rem;
+            width: max-content;
+            z-index: 10;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        &::after{
+            @include m.desktop{
+                content: "";
+                position: absolute;
+                left: 50%;
+                bottom: -8px;
+                width: 16px;
+                height: 16px;
+                background-color: v.$darkGrayishBlue;
+                transform: translateX(-50%) rotate(45deg);
+            }
+        }
+
+        &-text{
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: v.$grayishBlue;
+        }
+
+        &-button{
+            margin-left: auto;
+            border: none;
+            border-radius: 50%;
+            padding: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: color.adjust(v.$lightGrayishBlue, $lightness: -2%);
+
+            img {
+                display: block;
+            }
+
+            &:hover{
+                cursor: pointer;
+            }
+
+            &--active {
+                background-color: color.adjust(v.$darkGrayishBlue, $lightness: 15%);
+
+                img {
+                    filter: brightness(0) invert(1);
+                }
+
+                @include m.desktop{
+                    display: none;
+                }
+            }
+        }
+
+        &--icons{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &__icon{
+        margin-left: 1rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+}
+
+.hidden{
+    display: none;
+}
+
+.attribution{
+    margin-bottom: 0;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: v.$desaturatedDarkBlue;
+
+    a {
+        color: v.$darkGrayishBlue;
+    }
+
+}
